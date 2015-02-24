@@ -1,0 +1,56 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+
+
+<polymer-element name="breadcrumbs-element">
+    <template>
+        <style>
+            .crumbs{
+                margin: 0;
+                padding: 12px 20px 20px 20px;
+                list-style: none;
+                background-color: #fbfbfb;
+                border-radius: 3px 3px 0 0;
+            }
+            .crumbs li{
+                display: inline-block;
+                padding: 5px 0;
+            }
+            .crumbs li a{
+                text-decoration: none;
+                color: #aaa;
+            }
+            .crumbs li a:hover{
+                color: #448bff;
+            }
+            .crumbs li core-icon{
+                color: #aaa;
+            }
+        </style>
+        <ul class="crumbs">
+            <template repeat="{{link in links}}">
+                <li class="crumb-link" >
+                    <a href="{{link.url}}">{{link.name}}</a>
+                    <core-icon icon="chevron-right"></core-icon>   
+                </li>
+            </template>
+            
+            <li class="crumb-read">
+                <span>{{actual}}</span>
+            </li>
+        </ul>
+    </template>
+
+    <script>
+        Polymer('breadcrumbs-element', {
+          ready: function() {
+            this.links = [
+              {name: 'Home', url: '/'},
+              {name: 'Sign In', url: '/sign-in/'}
+            ];
+
+            this.actual = 'Recovery Password'
+          }
+        });
+    </script>
+</polymer-element>

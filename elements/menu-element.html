@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+
+<polymer-element name="menu-element">
+    <template>
+        <style>
+            .menu{
+                width: 250px;
+            }
+            core-item{
+                padding-left: 15px;
+                padding-right: 15px;
+                color: #888;
+            }
+            core-item:hover,
+            core-item:hover core-icon{
+                color: #444;
+            }
+            core-item core-icon{
+                color: #ccc;
+            }
+        </style>
+        <div class="menu">
+            <template repeat="{{item in menu}}">
+                <core-item icon="{{item.icon}}" label="{{item.name}}">
+                  <div flex></div>
+                  <core-icon icon="chevron-right"></core-icon>
+                  <a href="{{item.url}}" target="_self"></a>
+                </core-item>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        Polymer('menu-element', {
+          ready: function() {
+            this.menu = [
+              {name: 'Sign up', icon:'', url: '/'},
+              {name: 'Sign in', icon:'',url: '/'},
+              {name: 'Recovery password', icon:'',url: '/'},
+              {name: 'Update profile', icon:'',url: '/'},
+              {name: 'Cancel account', icon:'',url: '/'}
+            ];
+          }
+        });
+    </script>
+</polymer-element>
